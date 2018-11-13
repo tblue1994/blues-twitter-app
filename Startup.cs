@@ -1,3 +1,6 @@
+using Core.Interfaces;
+using Core.Types;
+using DataAccessors;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,9 +13,15 @@ namespace blues_twitter_app
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IHostingEnvironment env)
         {
-            Configuration = configuration;
+            var builder = new ConfigurationBuilder()
+            .SetBasePath(env.ContentRootPath)
+            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
+            .AddEnvironmentVariables();
+
+            Configuration = builder.Build();
         }
 
         public IConfiguration Configuration { get; }
@@ -27,6 +36,9 @@ namespace blues_twitter_app
             {
                 configuration.RootPath = "ClientApp/build";
             });
+
+            services.Configure<TwitterOptions>(Configuration.GetSection("TwitterKeys"));
+            services.AddScoped<ITwitterAccessor, TwitterAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
