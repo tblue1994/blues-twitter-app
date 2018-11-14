@@ -14,3 +14,6 @@ If you use visual studio, you only need to open the generated .csproj file, and 
 
 
 To create this app, I used a template found here: https://docs.microsoft.com/en-us/aspnet/core/client-side/spa/react?view=aspnetcore-2.1&tabs=visual-studio
+
+
+If you have any questions or trouble building, please do not hesitate to reach out
