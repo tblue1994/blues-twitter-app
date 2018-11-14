@@ -32,7 +32,8 @@ namespace Managers
                 //this api aparently stores their heights and weight in weird measurements. need to divide by 10 to get value in kg and m
                 Weight = Convert.ToDouble(randomPokemon.Weight) / 10,
                 Height = Convert.ToDouble(randomPokemon.Height) / 10,
-                Sprite = new Uri(randomPokemon.Sprites.FrontDefaultURL)
+                Sprite = new Uri(randomPokemon.Sprites.FrontDefaultURL),
+                Type = GetTypeString(randomPokemon.Types)
             };
             //return data
             return randPokemonDTO;
@@ -48,6 +49,22 @@ namespace Managers
         {
             TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
             return textInfo.ToTitleCase(lowerCaseName);
+        }
+
+        private string GetTypeString(List<PokemonType> types)
+        {
+            TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
+
+            PokemonType primary = types.FirstOrDefault(x => x.Slot == TypeSlot.Primary);
+            PokemonType secondary = types.FirstOrDefault(x => x.Slot == TypeSlot.Secondary);
+            if (secondary != null)
+            {
+                return $"{textInfo.ToTitleCase(primary.Data.Name)}/{textInfo.ToTitleCase(secondary.Data.Name)}";
+            }
+            else
+            {
+                return textInfo.ToTitleCase(primary.Data.Name);
+            }
         }
     }
 }

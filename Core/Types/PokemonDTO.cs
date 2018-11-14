@@ -22,5 +22,8 @@ namespace Core.Types
 
         [JsonProperty("sprite")]
         public Uri Sprite { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
     }
 }

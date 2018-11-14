@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Core.Types
 {
@@ -18,6 +19,9 @@ namespace Core.Types
 
         [JsonProperty("sprites")]
         public Sprites Sprites { get; set; }
+
+        [JsonProperty("types")]
+        public List<PokemonType> Types { get; set; }
 
     }
 }
