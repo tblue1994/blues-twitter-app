@@ -7,7 +7,7 @@ Ever since I discovered there was a Pokemon API (found here: https://pokeapi.co/
 This app has a button that generates a random ID (from 1 to 807) and grabs the pokemon with that ID from the Pokemon API. Then it displays the pokemons's id, name, height, weight, types and sprite, like a mini pokedex.
 
 
-To build, simply clone the repository and follow the build patterns for any .NET core app.
+Please ensure that you have ASP.NET Core 2.1 installed. To build, simply clone the repository and follow the build patterns for any .NET core app.
 
 
 If you use visual studio, you only need to open the generated .csproj file, and run the app as normal from there, as the build process restores npm dependencies on the first run
