@@ -1,6 +1,7 @@
 using Core.Interfaces;
 using Core.Types;
 using DataAccessors;
+using Managers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -36,9 +37,9 @@ namespace blues_twitter_app
             {
                 configuration.RootPath = "ClientApp/build";
             });
-
-            services.Configure<TwitterOptions>(Configuration.GetSection("TwitterKeys"));
-            services.AddScoped<ITwitterAccessor, TwitterAccessor>();
+            
+            services.AddScoped<IPokemonApiAccessor, PokemonApiAccessor>();
+            services.AddScoped<IPokemonManager, PokemonManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

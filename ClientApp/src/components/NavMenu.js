@@ -12,25 +12,15 @@ export class NavMenu extends Component {
       <Navbar inverse fixedTop fluid collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
-            <Link to={'/'}>blues_twitter_app</Link>
+            <Link to={'/'}>Pokemon Stats</Link>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-            <LinkContainer to={'/'} exact>
+            <LinkContainer to={'/'}>
               <NavItem>
-                <Glyphicon glyph='home' /> Home
-              </NavItem>
-            </LinkContainer>
-            <LinkContainer to={'/counter'}>
-              <NavItem>
-                <Glyphicon glyph='education' /> Counter
-              </NavItem>
-            </LinkContainer>
-            <LinkContainer to={'/fetchdata'}>
-              <NavItem>
-                <Glyphicon glyph='th-list' /> Fetch data
+                <Glyphicon glyph='flash' />Simple Stats
               </NavItem>
             </LinkContainer>
           </Nav>
